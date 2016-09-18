@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Brastlewark</string>
+    <string name="filter_label">Filter</string>
+    <string name="search_label">SEARCH</string>
+    <string name="cancel_label">CANCEL</string>
+    <string name="name_label">Name:</string>
+    <string name="age_label">Age:</string>
+    <string name="weight_label">Weight:</string>
+    <string name="max_weight_label">Max. Weight:</string>
+    <string name="min_weight_label">Min. Weight:</string>
+    <string name="height_label">Height:</string>
+    <string name="max_age_label">Max. Age:</string>
+    <string name="min_age_label">Min. Age:</string>
+    <string name="max_height_label">Max. Height:</string>
+    <string name="min_height_label">Min. Height:</string>
+    <string name="hair_color_label">Hair color:</string>
+    <string name="professions_label">Professions:</string>
+    <string name="friends_label">Friends:</string>
+    <string name="years_label">years</string>
+    <string name="grams_label">g</string>
+    <string name="milimeters_label">mm</string>
+
+    <string name="no_internet_exception">No intenet conexion available!</string>
+    <string name="no_data_founded_exception">No data founded!</string>
+    <string name="no_gnome_founded_exception">No gnome founded!</string>
+    <string name="converter_item_exception">Unable to convert to GnomeItem!</string>
+    <string name="converter_details_exception">Unable to convert to GnomeDetail!</string>
+
+</resources>
