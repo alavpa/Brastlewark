@@ -61,6 +61,9 @@ public class FilterFragment extends Fragment implements FilterView{
     FilterPresenter presenter;
     FilterParentView parent;
 
+    List<String> selectedHair = new ArrayList<>();
+    List<String> selectedProfession = new ArrayList<>();
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -71,6 +74,11 @@ public class FilterFragment extends Fragment implements FilterView{
     public void onDetach() {
         super.onDetach();
         parent = null;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -142,31 +150,37 @@ public class FilterFragment extends Fragment implements FilterView{
     @Override
     public void addHairColor(List<String> color) {
 
-        fillCheckBoxes(color,ll_hair_color);
+        if(ll_hair_color.getChildCount()==0) {
+            fillCheckBoxes(color, ll_hair_color, selectedHair);
+        }
 
     }
 
     @Override
     public void addProfession(List<String> profession) {
 
-        fillCheckBoxes(profession,ll_professions);
+        if(ll_professions.getChildCount()==0) {
+            fillCheckBoxes(profession, ll_professions, selectedProfession);
+        }
     }
 
     @Override
     public List<String> getProfessions() {
         List<String> professions = new ArrayList<>();
-        getCheckBoxesText(ll_professions,professions);
+        getCheckBoxesText(ll_professions,professions,selectedProfession);
         return professions;
     }
 
     @Override
     public List<String> getHairColor() {
         List<String> colors = new ArrayList<>();
-        getCheckBoxesText(ll_hair_color,colors);
+        getCheckBoxesText(ll_hair_color,colors,selectedHair);
         return colors;
     }
 
-    public void getCheckBoxesText(LinearLayout ll_parent,List<String> list){
+    public void getCheckBoxesText(LinearLayout ll_parent,List<String> list,List<String> selected){
+
+        selected.clear();
         for(int i = 0;i<ll_parent.getChildCount();i++){
             LinearLayout ll = (LinearLayout) ll_parent.getChildAt(i);
 
@@ -174,6 +188,7 @@ public class FilterFragment extends Fragment implements FilterView{
                 CheckBox chk = (CheckBox) ll.getChildAt(j);
                 if(chk!=null) {
                     if(chk.isChecked()) {
+                        selected.add(chk.getText().toString());
                         list.add(chk.getText().toString());
                     }
                 }
@@ -182,7 +197,7 @@ public class FilterFragment extends Fragment implements FilterView{
     }
 
 
-    public void fillCheckBoxes(List<String> texts, LinearLayout container){
+    public void fillCheckBoxes(List<String> texts, LinearLayout container, List<String> selected){
 
         LinearLayout ll  = (LinearLayout) LayoutInflater.from(App.get())
                 .inflate(R.layout.layout_checkbox,container,false);
@@ -193,10 +208,16 @@ public class FilterFragment extends Fragment implements FilterView{
                 CheckBox chk_text1 = (CheckBox)ll.findViewById(R.id.chk_text1);
                 chk_text1.setVisibility(View.VISIBLE);
                 chk_text1.setText(texts.get(i));
+                if(selected.contains(texts.get(i))){
+                    chk_text1.setChecked(true);
+                }
             }else{
                 CheckBox chk_text2 = (CheckBox)ll.findViewById(R.id.chk_text2);
                 chk_text2.setVisibility(View.VISIBLE);
                 chk_text2.setText(texts.get(i));
+                if(selected.contains(texts.get(i))){
+                    chk_text2.setChecked(true);
+                }
 
                 ll  = (LinearLayout) LayoutInflater.from(App.get())
                         .inflate(R.layout.layout_checkbox,container,false);
