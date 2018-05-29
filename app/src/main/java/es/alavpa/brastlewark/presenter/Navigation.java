@@ -30,7 +30,6 @@ public class Navigation {
     public void openMain(){
         ctx.startActivity(new Intent(ctx, MainActivity.class));
         //Test4
-        //Test5
     }
 
 }
