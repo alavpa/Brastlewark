@@ -14,5 +14,7 @@ public class StartActivity extends BaseActivity {
 
         navigation.openMain();
         finish();
+
+
     }
 }
