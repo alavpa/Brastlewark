@@ -16,5 +16,6 @@ public class StartActivity extends BaseActivity {
         finish();
 
         //Test1
+        //Test2
     }
 }
